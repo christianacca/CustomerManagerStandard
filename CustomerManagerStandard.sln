@@ -31,6 +31,12 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "CustomerManager.Spa", "Cust
 		{9070F180-9D2C-44CD-86C7-0EFB3918D2F0} = {9070F180-9D2C-44CD-86C7-0EFB3918D2F0}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DC56F86C-A7D2-4775-935D-46197A659F5C}"
+	ProjectSection(SolutionItems) = preProject
+		setup.ps1 = setup.ps1
+		Setup_Db.sql = Setup_Db.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

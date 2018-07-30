@@ -1,0 +1,5 @@
+﻿CREATE LOGIN [IIS AppPool\DefaultAppPool] FROM WINDOWS WITH DEFAULT_DATABASE=[master], DEFAULT_LANGUAGE=[us_english]
+GO
+
+ALTER SERVER ROLE [dbcreator] ADD MEMBER [IIS AppPool\DefaultAppPool]
+GO

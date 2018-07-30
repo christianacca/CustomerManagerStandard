@@ -2,7 +2,7 @@
 
     var value = {
         useBreeze: true,
-        apiBaseUrl: 'http://localhost:58000'
+        apiBaseUrl: 'http://localhost/CustomerManager'
     };
 
     angular.module('customersApp').value('config', value);
