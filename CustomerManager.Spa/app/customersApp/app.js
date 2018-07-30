@@ -43,10 +43,15 @@
     }])
     .config(['ccAppInsightsProvider', function (ccAppInsightsProvider) {
         ccAppInsightsProvider.configure();
+        // below is an example of registering an angular service/factory as a telemetry initializer
+        // for more options see https://github.com/christianacca/angular-cc-appinsights/blob/master/api-reference.md
+//        ccAppInsightsProvider.configure({
+//            telemetryInitializers: ['sessionIdTelemetryInitializer']
+//        });
     }]);
 
-    app.run(['$rootScope', '$location', 'authService',
-        function ($rootScope, $location, authService) {
+    app.run(['$rootScope', '$location', 'authService', 'ccAppInsights',
+        function ($rootScope, $location, authService, ccAppInsights) {
             
             //Client-side security. Server-side framework MUST add it's 
             //own security as well since client-based security is easily hacked
@@ -60,7 +65,16 @@
                 }
             });
 
-    }]);
+            $rootScope.$on('loginStatusChanged', function() {
+                if (authService.user.isAuthenticated) {
+                    var storeInCookie = true;
+                    ccAppInsights.service.setAuthenticatedUserContext(authService.user.id, null, storeInCookie);
+                } else {
+                    ccAppInsights.service.clearAuthenticatedUserContext();
+                }
+            });
+
+        }]);
 
 }());
 

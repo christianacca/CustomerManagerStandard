@@ -7,6 +7,7 @@
             factory = {
                 loginPath: '/login',
                 user: {
+                    id: '',
                     isAuthenticated: false,
                     roles: null
                 }
@@ -16,7 +17,7 @@
             return $http.post(serviceBase + 'login', { userLogin: { userName: email, password: password } }).then(
                 function (results) {
                     var loggedIn = results.data.status;;
-                    changeAuth(loggedIn);
+                    changeAuth(loggedIn, email);
                     return loggedIn;
                 });
         };
@@ -34,8 +35,9 @@
             $rootScope.$broadcast('redirectToLogin', null);
         };
 
-        function changeAuth(loggedIn) {
+        function changeAuth(loggedIn, userId) {
             factory.user.isAuthenticated = loggedIn;
+            factory.user.id = userId;
             $rootScope.$broadcast('loginStatusChanged', loggedIn);
         }
 
