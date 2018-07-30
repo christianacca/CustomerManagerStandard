@@ -44,7 +44,9 @@ The following is required to support the backend services:
 
 * ASP.NET MVC and Web API are used for the back-end services along with Entity Framework for database access (included if you have VS 2015 community installed with the LocalDB option selected)
 
-To get started, double-click the CustomerManager.sln file located at the root of the CustomerManager repository. Once the solution loads press F5 to run the project.
+To get started, double-click the CustomerManager.sln file located at the root of the CustomerManager repository. Once the solution loads:
+* Open the solution property pages and ensure Startup projects set to 'Multiple startup projects' and CustomerManager and CustomerManager.Spa projects are selected
+* press F5 to run the project.
 
 Note: If you want to use Visual Studio 2013 that should work although you may have to change the connection string in web.config from "MSSqlLocalDB" to "v11.0" depending upon which version of LocalDB you have installed.
 
