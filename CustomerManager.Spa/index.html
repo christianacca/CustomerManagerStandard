@@ -77,9 +77,27 @@
     </div>
 
     <!-- 3rd party libraries -->
+    <script src="Scripts/ai-1.0.18.js"></script>
+    <script type="text/javascript">   
+        var snippet = {   
+            config: {   
+                instrumentationKey: "fac0acac-6881-4e30-981e-304075e40ed7",
+                isCookieUseDisabled: true,
+                enableCorsCorrelation: true
+            }   
+        };   
+        var init = new Microsoft.ApplicationInsights.Initialization(snippet);   
+        var appInsights = init.loadAppInsights();
+        appInsights.setAuthenticatedUserContext("christianacca", "5E98F5A8-C02C-4FF3-ADDF-731E26204014");
+    //        appInsights.context.addTelemetryInitializer(function (envelope) {
+    //            console.log(envelope);
+    //        });
+        appInsights.trackPageView();
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.min.js"></script>
+    <script src="node_modules/angular-cc-appinsights/dist/angular-cc-appinsights.js"></script>
     <script src="Scripts/angular-ui-bootstrap.js"></script>
     <script src="Scripts/tweenMax.min.js"></script>
     

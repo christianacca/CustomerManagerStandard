@@ -1,7 +1,7 @@
 ﻿(function () {
 
     var value = {
-        useBreeze: false,
+        useBreeze: true,
         apiBaseUrl: 'http://localhost:58000'
     };
 

@@ -1,7 +1,7 @@
 ﻿(function () {
 
     var app = angular.module('customersApp',
-        ['ngRoute', 'ngAnimate', 'wc.directives', 'ui.bootstrap', 'breeze.angular']);
+        ['ngRoute', 'ngAnimate', 'wc.directives', 'ui.bootstrap', 'breeze.angular', 'cc-appinsights']);
 
     app.config(['$routeProvider', function ($routeProvider) {
         var viewBase = '/app/customersApp/views/';
@@ -40,6 +40,9 @@
             })
             .otherwise({ redirectTo: '/customers' });
 
+    }])
+    .config(['ccAppInsightsProvider', function (ccAppInsightsProvider) {
+        ccAppInsightsProvider.configure();
     }]);
 
     app.run(['$rootScope', '$location', 'authService',
