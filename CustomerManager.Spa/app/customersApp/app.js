@@ -4,7 +4,7 @@
         ['ngRoute', 'ngAnimate', 'wc.directives', 'ui.bootstrap', 'breeze.angular', 'cc-appinsights']);
 
     app.config(['$routeProvider', function ($routeProvider) {
-        var viewBase = '/app/customersApp/views/';
+        var viewBase = 'app/customersApp/views/';
 
         $routeProvider
             .when('/customers', {

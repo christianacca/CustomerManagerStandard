@@ -22,7 +22,7 @@
                     <div>
                         <h4><a href="#/customerorders/{{customer.id}}">{{ customer.firstName + ' ' + customer.lastName }}</a></h4>
                     </div>
-                    <div data-ng-include="'/app/customersApp/views/orders/ordersTable.html'" data-ng-controller="OrderChildController as vm" />
+                    <div data-ng-include="'app/customersApp/views/orders/ordersTable.html'" data-ng-controller="OrderChildController as vm" />
                 </div>
             </div>
             <div class="row show-hide-animation" data-ng-show="vm.filteredCustomers.length == 0">
