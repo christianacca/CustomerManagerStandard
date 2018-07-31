@@ -33,6 +33,11 @@
                 templateUrl: viewBase + 'about.html',
                 controllerAs: 'vm'
             })
+            .when('/exceptiondemo', {
+                controller: 'ExceptionDemoController',
+                templateUrl: viewBase + 'exceptiondemo.html',
+                controllerAs: 'vm'
+            })
             .when('/login/:redirect*?', {
                 controller: 'LoginController',
                 templateUrl: viewBase + 'login.html',

@@ -1,0 +1,42 @@
+﻿<div class="view">
+    <div class="container">
+        <header>
+            <h3><span class="glyphicon glyphicon-info-sign"></span> Exception demos</h3>
+        </header>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="list-group">
+                    <button type="button" class="list-group-item" ng-click="vm.server500Unhandled()">
+                        <i class="glyphicon glyphicon-play"></i>
+                        Server returns 500 (<strong>unhandled</strong>)
+                    </button>
+                    <button type="button" class="list-group-item" ng-click="vm.server400Unhandled()">
+                        <i class="glyphicon glyphicon-play"></i>
+                        Server returns 400 (<strong>unhandled</strong>)
+                    </button>
+                    <button type="button" class="list-group-item" ng-click="vm.server500Handled()">
+                        <i class="glyphicon glyphicon-play"></i>
+                        Server returns 500 (<strong>handled</strong>)
+                    </button>
+                    <button type="button" class="list-group-item" ng-click="vm.server400Handled()">
+                        <i class="glyphicon glyphicon-play"></i>
+                        Server returns 400 (<strong>handled</strong>)
+                    </button>
+                    <button type="button" class="list-group-item" ng-click="vm.clientUnhandled()">
+                        <i class="glyphicon glyphicon-play"></i>
+                        Client side error (<strong>unhandled</strong>)
+                    </button>
+                    <button type="button" class="list-group-item" ng-click="vm.clientHandled()">
+                        <i class="glyphicon glyphicon-play"></i>
+                        Client side error (<strong>handled</strong>)
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="alert alert-info" role="alert"><strong>Open</strong> console in developer tools to see results of each demo</div>
+            </div>
+        </div>
+    </div>
+</div>
