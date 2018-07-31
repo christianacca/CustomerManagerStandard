@@ -1,40 +1,16 @@
-﻿Customer Manager with AngularJS
+﻿AngularJS + Application Insights
 ===============
 
-If you’re new to AngularJS check out my [AngularJS in 60-ish Minutes](http://weblogs.asp.net/dwahlin/archive/2013/04/12/video-tutorial-angularjs-fundamentals-in-60-ish-minutes.aspx) video tutorial or download the [free eBook](http://weblogs.asp.net/dwahlin/archive/2013/07/30/angularjs-in-60-ish-minutes-the-ebook.aspx). Also check out [The AngularJS Magazine](http://flip.it/bdyUX) for up-to-date information on using AngularJS to build Single Page Applications (SPAs).
+This demo is a fork of [Dan Wahlin's](https://github.com/DanWahlin) [CustomerManagerStandard](https://github.com/DanWahlin/CustomerManager) git repo.
 
-Also check out my <a href="http://tinyurl.com/angularjsjumpstart">AngularJS JumpStart</a> video course:
+This repo modifies the original as follows:
+* Adds [MS Application Insights](https://azure.microsoft.com/en-gb/services/application-insights/) (App Insights) instrumentation
+* Seperates out the SPA into a standalone static website
+* Uses SQL Sever Express or higher and hosts the site in full version of IIS
 
-<a href="http://tinyurl.com/angularjsjumpstart">
-    <img height="225" width="400" src="CustomerManager/Content/images/CourseLogoYellow.png" border="0" />
-</a>
+Notes that seperating the SPA and hosting using full IIS and SQL Server was not neccessary to do just to add App Insights. However, it was useful to show that App Insights in a more advanced/realistic setup.
 
-
-![Customer Management App](CustomerManager/Content/images/customerApp.png)
-
-This is the standard Customer Manager application. To view a version of the application that has custom routing and dynamic controller script loading visit [https://github.com/DanWahlin/CustomerManager](https://github.com/DanWahlin/CustomerManager).
-This application demonstrates:
-
-* A complete application with read-only and editable data
-* Using AngularJS with $http in a factory to access a backend RESTful service
-* Using BreezeJS in a factory to access a backend RESTful Service
-* Techniques for showing multiple views of data (card view and list view)
-* Custom filters for filtering customer and product data
-* A custom directive to ensure unique values in a form for email 
-* A custom directive that intercepts $http and jQuery XHR requests (in case either are used) and displays a loading dialog
-* A custom directive that handles highlighting menu items automatically based upon the path navigated to by the user
-* Form validation using AngularJS
-* Provides login and authentication functionality (currently client-side only - plan to add server-side part too which is absolutely required in a "real" app)
-
-The factories can be switched by changing the app/customersApp/services/config useBreeze setting to true.
-
-The AngularJS portion of the app is structured using the following folders:
-
-![Customer Management App Structure](CustomerManager/Content/images/appFolders.png)
-
-A related example that ties into Azure Active Directory Services and Office 365/SharePoint can be found [here](https://github.com/OfficeDev/SP-AngularJS-ExpenseManager-Code-Sample).
-
-## Requirements:
+## Getting started
 
 ### If you're using Visual Studio and .NET:
 
@@ -44,54 +20,27 @@ The following is required to support the backend services:
 
 * ASP.NET MVC and Web API are used for the back-end services along with Entity Framework for database access (included if you have VS 2015 community installed with the LocalDB option selected)
 
-To get started, double-click the CustomerManager.sln file located at the root of the CustomerManager repository. Once the solution loads:
-* Open the solution property pages and ensure Startup projects set to 'Multiple startup projects' and CustomerManager and CustomerManager.Spa projects are selected
-* press F5 to run the project.
+* SQL Server express or above
 
-Note: If you want to use Visual Studio 2013 that should work although you may have to change the connection string in web.config from "MSSqlLocalDB" to "v11.0" depending upon which version of LocalDB you have installed.
+* Local IIS (ie NOT IIS express but full version)
+
+To get started:
+* Open CustomManager\web.config and adjust the db connection string to use your installation of SQL Server
+* Open setup.ps1 adjust the name of the SQL server instance on line 2
+* Run setup.ps1 in an elevated powershell prompt
+* Add CustomerManager.Spa as a child application under the Default website in IIS
+* Double-click the CustomerManager.sln file located at the root of the CustomerManager repository and compile the solution
 
 ### If you're using Node.js/Express/MongoDB
 
-If you don't already have Node.js on your machine install it from http://nodejs.org. You'll also need to install MongoDB from http://www.mongodb.org if you don't have it already and get it configured and running using the instructions on their site.
-
-In the CustomerManager directory execute 'npm install' to install Express, MongoDB and Mongoose (package.json).
-
-Load MongoDB Sample Data Option 1: 
-
-Load data into MongoDB by performing the following steps:
-
-* Execute 'mongod' to start the MongoDB daemon
-* Navigate to the CustomerManager/server directory (the one that has initMongoData.js in it)
-* Execute 'mongo' to start the MongoDB shell
-* Enter the following in the mongo shell to load the data seed file:
- * use customermanager
- * load("initMongoData.js")
-
-Load Sample Data Option 2: 
-
-Alternatively you can navigate to CustomerManager/server and double-click the initMongoData.bat (Windows) or initMongoData.sh (Mac/Linux) file to initialize MongoDB with the data. 
-
-The Windows script assumes that MongoDB is installed at c:\mongodb while the Linux/Mac script relies on the fact that you have the monogo executable
-in the path.
-
-Start the Node/Express server:
-
-* Open a command prompt
-* Navigate to the CustomerManager directory
-* Run 'npm install' at the command prompt
-* Navigate to the CustomerManager/server directory
-* Run 'node server.js'
-
-View the application at http://localhost:3000
-
-Thanks to [Tony Quinn](https://github.com/tonyq) for contributing the initial Node.js/MongoDB code!
+**TODO**: the source code needs to be modified in the server folder to just serve the api. Then instructions need to be provided to run say [http-server](https://www.npmjs.com/package/http-server) to serve the SPA
 
 ## E2E tests using Protractor:
 
 _E2E tests using Protractor for .NET, and Selenium's WebDriver wrapper for Angular_
 
 Tests are written with [NUnit](http://nunit.org/) but feel free to change it.
-(Tests use `http://localhost:58000/` so make sure IIS Express is running the app)
+(Tests use `http://localhost/CustomerManager.Spa/` so make sure IIS Express is running the app)
 
 There are several ways to execute these tests:
 
