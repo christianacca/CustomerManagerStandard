@@ -4,7 +4,8 @@ namespace CustomerManager.Controllers
 {
     public class BadRequestController : ApiController
     {
-        public IHttpActionResult Get()
+        [HttpGet]
+        public object ReturnError()
         {
             ModelState.AddModelError("", "Example of client sending bad input");
             return BadRequest(ModelState);

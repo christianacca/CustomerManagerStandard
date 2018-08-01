@@ -1,7 +1,7 @@
 ﻿(function () {
 
     var app = angular.module('customersApp',
-        ['ngRoute', 'ngAnimate', 'wc.directives', 'ui.bootstrap', 'breeze.angular', 'cc-appinsights']);
+        ['ngRoute', 'ngAnimate', 'wc.directives', 'ui.bootstrap', 'breeze.angular', 'cc-appinsights', 'ccExceptionPoliciesModule']);
 
     app.config(['$routeProvider', function ($routeProvider) {
         var viewBase = 'app/customersApp/views/';
@@ -53,6 +53,11 @@
 //        ccAppInsightsProvider.configure({
 //            telemetryInitializers: ['sessionIdTelemetryInitializer']
 //        });
+    }])
+    .config(['ccExPoliciyHttpInterceptorProvider', function(exPoliciyHttpInterceptorProvider) {
+        exPoliciyHttpInterceptorProvider.setHttpExPolicySelector(function(/*rejection*/) {
+            return true;
+        });
     }]);
 
     app.run(['$rootScope', '$location', 'authService', 'ccAppInsights',

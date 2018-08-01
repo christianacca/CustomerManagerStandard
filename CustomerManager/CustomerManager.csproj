@@ -178,6 +178,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BreezeWebApiConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ControllerConstructorErrorController.cs" />
     <Compile Include="Controllers\BadRequestController.cs" />
     <Compile Include="Controllers\InternalServerErrorController.cs" />
     <Compile Include="Controllers\BreezeDataServiceController.cs" />

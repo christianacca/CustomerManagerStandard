@@ -9,6 +9,11 @@
 
         // configure to use the model library for Angular
         breeze.config.initializeAdapterInstance('modelLibrary', 'backingStore', true);
+
+        // $http requests issued by breeze should NOT have failure responses tampered with
+        var ajaxAdapter = breeze.config.getAdapterInstance('ajax');
+        ajaxAdapter.defaultSettings.ccApplyHttpExPolicy = false;
+
         // configure to use camelCase
         breeze.NamingConvention.camelCase.setAsDefault();
         // create entity Manager

@@ -8,19 +8,27 @@
             <div class="col-md-6">
 
                 <div class="list-group">
-                    <button type="button" class="list-group-item" ng-click="vm.server500Unhandled()">
+                    <button type="button" class="list-group-item" ng-click="vm.api500Unhandled()">
                         <i class="glyphicon glyphicon-play"></i>
-                        Server returns 500 (<strong>unhandled</strong>)
+                        API <em>returns</em> 500 (<strong>unhandled</strong>)
                     </button>
-                    <button type="button" class="list-group-item" ng-click="vm.server400Unhandled()">
+                    <button type="button" class="list-group-item" ng-click="vm.apiExUnhandled()">
+                        <i class="glyphicon glyphicon-play"></i>
+                        API <em>throws</em> 500 (<strong>unhandled</strong>)
+                    </button>
+                    <button type="button" class="list-group-item" ng-click="vm.apiCtorExUnhandled()">
+                        <i class="glyphicon glyphicon-play"></i>
+                        API controller ctor throws (<strong>unhandled</strong>)
+                    </button>
+                    <button type="button" class="list-group-item" ng-click="vm.api400Unhandled()">
                         <i class="glyphicon glyphicon-play"></i>
                         Server returns 400 (<strong>unhandled</strong>)
                     </button>
-                    <button type="button" class="list-group-item" ng-click="vm.server500Handled()">
+                    <button type="button" class="list-group-item" ng-click="vm.api500Handled()">
                         <i class="glyphicon glyphicon-play"></i>
                         Server returns 500 (<strong>handled</strong>)
                     </button>
-                    <button type="button" class="list-group-item" ng-click="vm.server400Handled()">
+                    <button type="button" class="list-group-item" ng-click="vm.api400Handled()">
                         <i class="glyphicon glyphicon-play"></i>
                         Server returns 400 (<strong>handled</strong>)
                     </button>
@@ -32,10 +40,15 @@
                         <i class="glyphicon glyphicon-play"></i>
                         Client side error (<strong>handled</strong>)
                     </button>
+                    <button type="button" class="list-group-item" ng-click="vm.promiseChainExHandled()">
+                        <i class="glyphicon glyphicon-play"></i>
+                        Error in promise chain (<strong>handled</strong>)
+                    </button>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="alert alert-info" role="alert"><strong>Open</strong> console in developer tools to see results of each demo</div>
+                <div class="alert alert-info" role="alert">See code comments in <code>exceptionDemoController</code></div>
             </div>
         </div>
     </div>
