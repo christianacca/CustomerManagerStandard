@@ -88,10 +88,16 @@
         };   
         var init = new Microsoft.ApplicationInsights.Initialization(snippet);   
         var appInsights = init.loadAppInsights();
+
+        // set the version of your SPA (see commented out code below for an alternative method)
+        appInsights.context.application.ver = '2.2.0.0';
+
         // below is example of adding a telemetry initializer directly to AppInsights
         // if your telemetry initializer needs to use angular dependency injection
         // then you will need to use registry these using ccAppInsightsProvider.configure
 //        appInsights.context.addTelemetryInitializer(function (envelope) {
+//            // alternative method of adding context to each telemetry item:
+//            // envelope.tags['ai.application.ver'] = '2.2.0.0';
 //            console.log(envelope);
 //        });
         appInsights.trackPageView();
